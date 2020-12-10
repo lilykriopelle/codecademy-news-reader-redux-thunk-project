@@ -1,102 +1,52 @@
-[
-  {
-    "id": 1,
-    "title": "Title 1",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 2,
-    "title": "Title 2",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 3,
-    "title": "Title 3",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 4,
-    "title": "Title 4",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 5,
-    "title": "Title 5",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 6,
-    "title": "Title 6",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 7,
-    "title": "Title 7",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 8,
-    "title": "Title 8",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 9,
-    "title": "Title 9",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 10,
-    "title": "Title 10",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 11,
-    "title": "Title 11",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 12,
-    "title": "Title 12",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 13,
-    "title": "Title 13",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 14,
-    "title": "Title 14",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 15,
-    "title": "Title 15",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 16,
-    "title": "Title 16",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 17,
-    "title": "Title 17",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 18,
-    "title": "Title 18",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 19,
-    "title": "Title 19",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    "id": 20,
-    "title": "Title 20",
-    "previewText": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-  }
-]
+[{
+	"id": 1,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+},
+{
+	"id": 2,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+},
+{
+	"id": 3,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+},
+{
+	"id": 4,
+	"title": "Title 4",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+	"fullText": "this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article. this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article."
+},
+{
+	"id": 5,
+	"title": "Title 5",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+  "fullText": "this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article. this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article."
+},
+{
+	"id": 6,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+},
+{
+	"id": 7,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+},
+{
+	"id": 8,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+},
+{
+	"id": 9,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+},
+{
+	"id": 10,
+	"title": "Title",
+	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+}]
