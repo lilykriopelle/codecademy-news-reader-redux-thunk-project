@@ -24,6 +24,11 @@ const CurrentArticle = () => {
       <FullArticle article={article} />
       <section>
         <h2>Comments</h2>
+        <form onSubmit={e => e.preventDefault()}>
+          <label for="comment">New Comment</label>
+          <input id="comment" type="text"/>
+          <button>Publish</button>
+        </form>
         <ul>
           {commentsByArticleId && commentsByArticleId.map(c => <li><Comment comment={c}/></li>)}
         </ul>
