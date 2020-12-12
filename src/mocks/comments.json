@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "articleId": 5,
+    "text": "Sample comment lorem ipsum"
+  },
+  {
+    "id": 2,
+    "articleId": 5,
+    "text": "Another random comment"
+  },
+  {
+    "id": 2,
+    "articleId": 1,
+    "text": "A comment on the first article"
+  }
+]

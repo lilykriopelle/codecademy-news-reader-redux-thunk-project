@@ -4,7 +4,7 @@ export const loadAllPreviews = createAsyncThunk(
   "articlePreviews/loadAllPreviews",
   async () => {
     const data = await fetch("api/articles");
-    const json = await data.json(); // WHY DOES THIS LINE ERROR
+    const json = await data.json(); 
     return json;
   }
 );

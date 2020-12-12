@@ -3,10 +3,13 @@ main {
 }
 
 .articles-container {
-  width: 20%;
+  width: 250px;
   margin-right: 50px;
 }
 
+.current-article-container {
+  width: 500px;
+}
 
 .article-container {
     border: 1px solid black;
