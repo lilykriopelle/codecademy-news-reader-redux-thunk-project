@@ -13,23 +13,23 @@ export const currentArticleSlice = createSlice({
   name: "currentArticle",
   initialState: {
     article: {},
-    isLoading: false,
+    isLoadingCurrentArticle: false,
     hasError: false
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loadCurrentArticle.pending, (state) => {
-        state.isLoading = true;
+        state.isLoadingCurrentArticle = true;
         state.hasError = false;
       })
       .addCase(loadCurrentArticle.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.isLoadingCurrentArticle = false;
         state.hasError = false;
         state.article = action.payload;
       })
       .addCase(loadCurrentArticle.rejected, (state) => {
-        state.isLoading = false;
+        state.isLoadingCurrentArticle = false;
         state.hasError = true;
         state.article = {};
       })

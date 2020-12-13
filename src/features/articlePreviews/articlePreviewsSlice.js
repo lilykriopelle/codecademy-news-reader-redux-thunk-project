@@ -4,7 +4,7 @@ export const loadAllPreviews = createAsyncThunk(
   "articlePreviews/loadAllPreviews",
   async () => {
     const data = await fetch("api/articles");
-    const json = await data.json(); 
+    const json = await data.json();
     return json;
   }
 );
@@ -13,23 +13,23 @@ export const articlePreviewsSlice = createSlice({
   name: "articlePreviews",
   initialState: {
     articles: [],
-    isLoading: false,
+    isLoadingArticlePreviews: false,
     hasError: false
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loadAllPreviews.pending, (state) => {
-        state.isLoading = true;
+        state.isLoadingArticlePreviews = true;
         state.hasError = false;
       })
       .addCase(loadAllPreviews.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.isLoadingArticlePreviews = false;
         state.hasError = false;
         state.articles = action.payload;
       })
       .addCase(loadAllPreviews.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isLoadingArticlePreviews = false;
         state.hasError = true;
         state.articles = [];
       })

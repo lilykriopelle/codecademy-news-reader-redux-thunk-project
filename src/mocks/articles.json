@@ -1,29 +1,32 @@
 [{
 	"id": 1,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+	"title": "A News Article About World News",
+	"preview": "The preview of the article about world news",
+	"fullText": "This is the full body of the article about world news."
 },
 {
 	"id": 2,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+	"title": "A News Article About USA News",
+	"preview": "The preview of the article about USA news",
+	"fullText": "This is the full body of the article about USA news, "
 },
 {
 	"id": 3,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+	"title": "A News Article About Sports",
+	"preview": "The preview of the article about sports",
+	"fullText": "This is the full body of the article about sports, "
 },
 {
 	"id": 4,
-	"title": "Title 4",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-	"fullText": "this is actual article text, which you only see when you open this as the full article. this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article."
+	"title": "A News Article About Arts & Culture",
+	"preview": "The preview of the article about arts and culture",
+	"fullText": "This is the full body of the article about arts and culture, "
 },
 {
 	"id": 5,
-	"title": "Title 5",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-  "fullText": "this is actual article text, which you only see when you open this as the full article. this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article.this is not lorem ipsum! this is actual article text, which you only see when you open this as the full article."
+	"title": "A News Article Fashion",
+	"preview": "The preview of the article about fashion",
+	"fullText": "This is the full body of the article about fashion, "
 },
 {
 	"id": 6,
