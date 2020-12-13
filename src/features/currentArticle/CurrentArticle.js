@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCurrentArticle } from "./currentArticleSlice";
 import { loadCommentsForArticleId } from "../comments/commentsSlice";
 import { postCommentForArticleId } from "../comments/commentsSlice";
 import FullArticle from "../../components/FullArticle"
@@ -10,7 +9,6 @@ const CurrentArticle = () => {
   const dispatch = useDispatch();
   const article = useSelector((state) => state.currentArticle.article);
   const commentsByArticleId = useSelector((state) => state.comments.byArticleId[article.id]);
-  const { isLoadingArticlePreviews } = useSelector((state) => state.articlePreviews);
   const { isLoadingCurrentArticle } = useSelector((state) => state.currentArticle);
   const { isLoadingComments } = useSelector((state) => state.comments);
   const { createCommentIsPending } = useSelector((state) => state.comments);
