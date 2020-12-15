@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadCommentsForArticleId } from "../comments/commentsSlice";
 import { postCommentForArticleId } from "../comments/commentsSlice";
 import FullArticle from "../../components/FullArticle"
-import Comment from "../../components/Comment"
+import CommentList from "../../components/CommentList"
 
 const CurrentArticle = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const CurrentArticle = () => {
       <section>
         <h2>Comments</h2>
         <ul>
-          {isLoadingComments ? loadingMessage("Comments") : (commentsByArticleId || []).map(c => <li><Comment comment={c}/></li>)}
+          {isLoadingComments ? loadingMessage("Comments") : <CommentList comments={commentsByArticleId} />}
         </ul>
         <form onSubmit={handleSubmit}>
           <label for="comment">New Comment</label>
