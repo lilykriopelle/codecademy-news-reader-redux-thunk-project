@@ -1,6 +1,7 @@
 import './App.css';
 import ArticlePreviews from "../features/articlePreviews/ArticlePreviews"
 import CurrentArticle from "../features/currentArticle/CurrentArticle"
+import Comments from "../features/comments/Comments"
 
 function App() {
   return (
@@ -8,7 +9,10 @@ function App() {
       <header className="App-header"/>
       <main>
         <ArticlePreviews />
-        <CurrentArticle />
+        <div>
+          <CurrentArticle />
+          <Comments />
+        </div>
       </main>
     </div>
   );
