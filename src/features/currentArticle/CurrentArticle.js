@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCommentsForArticleId } from "../comments/commentsSlice";
-import { postCommentForArticleId } from "../comments/commentsSlice";
 import FullArticle from "../../components/FullArticle"
 import CommentList from "../../components/CommentList"
+import CommentForm from "../../components/CommentForm"
 
 const CurrentArticle = () => {
   const dispatch = useDispatch();
@@ -11,8 +11,6 @@ const CurrentArticle = () => {
   const commentsByArticleId = useSelector((state) => state.comments.byArticleId[article.id]);
   const { isLoadingCurrentArticle } = useSelector((state) => state.currentArticle);
   const { isLoadingComments } = useSelector((state) => state.comments);
-  const { createCommentIsPending } = useSelector((state) => state.comments);
-  const [comment, setComment] = useState('');
 
   useEffect(() => {
     dispatch(loadCommentsForArticleId(article.id));
@@ -29,12 +27,6 @@ const CurrentArticle = () => {
     );
   }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    dispatch(postCommentForArticleId({articleId: article.id, comment: comment}))
-    setComment('')
-  }
-
   const loadingMessage = text => <div>Loading {text}</div>;
 
   return (
@@ -45,11 +37,7 @@ const CurrentArticle = () => {
         <ul>
           {isLoadingComments ? loadingMessage("Comments") : <CommentList comments={commentsByArticleId} />}
         </ul>
-        <form onSubmit={handleSubmit}>
-          <label for="comment">New Comment</label>
-          <input id="comment" value={comment} onChange={e => setComment(e.currentTarget.value)} type="text"/>
-          <button disabled={createCommentIsPending}>Publish</button>
-        </form>
+        <CommentForm articleId={article.id}/>
       </section>
     </div>
   );
