@@ -12,11 +12,10 @@ export const loadCurrentArticle = createAsyncThunk(
 export const currentArticleSlice = createSlice({
   name: 'currentArticle',
   initialState: {
-    article: {},
+    article: undefined,
     isLoadingCurrentArticle: false,
     hasError: false
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loadCurrentArticle.pending, (state) => {
@@ -37,5 +36,6 @@ export const currentArticleSlice = createSlice({
 });
 
 export const selectCurrentArticle = (state) => state.currentArticle.article;
+export const isLoadingCurrentArticle = (state) => state.currentArticle.isLoadingCurrentArticle;
 
 export default currentArticleSlice.reducer;

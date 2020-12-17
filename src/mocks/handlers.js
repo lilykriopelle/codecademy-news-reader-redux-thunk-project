@@ -15,7 +15,11 @@ function mockDelay(milliseconds) {
 export const handlers = [
   rest.get('/api/articles', (req, res, ctx) => {
     mockDelay(500)
-    return res(ctx.status(200), ctx.json(articlesData))
+    return res(ctx.status(200), ctx.json(articlesData.map(article => ({
+      id: article.id,
+      title: article.title,
+      preview: article.preview,
+    }))))
   }),
   rest.get('/api/articles/:articleId', (req, res, ctx) => {
     mockDelay(500)

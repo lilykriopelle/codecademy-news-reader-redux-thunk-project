@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadAllPreviews, selectAllPreviews } from './articlePreviewsSlice';
+import { loadAllPreviews, selectAllPreviews, isLoading } from './articlePreviewsSlice';
 import { loadCurrentArticle } from '../currentArticle/currentArticleSlice';
 import ArticleListItem from '../../components/ArticleListItem';
 
 const ArticlePreviews = () => {
   const dispatch = useDispatch();
   const articlePreviews = useSelector(selectAllPreviews);
-  const { isLoading } = useSelector((state) => state.articlePreviews);
+  const isLoadingPreviews = useSelector(isLoading);
 
   useEffect(() => {
     dispatch(loadAllPreviews());
   }, [dispatch]);
 
-  if (isLoading) {
+  if (isLoadingPreviews) {
     return <div>loading state</div>;
   }
 

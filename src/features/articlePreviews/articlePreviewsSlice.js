@@ -16,7 +16,6 @@ export const articlePreviewsSlice = createSlice({
     isLoadingArticlePreviews: false,
     hasError: false
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loadAllPreviews.pending, (state) => {
@@ -25,7 +24,6 @@ export const articlePreviewsSlice = createSlice({
       })
       .addCase(loadAllPreviews.fulfilled, (state, action) => {
         state.isLoadingArticlePreviews = false;
-        state.hasError = false;
         state.articles = action.payload;
       })
       .addCase(loadAllPreviews.rejected, (state, action) => {
@@ -37,5 +35,7 @@ export const articlePreviewsSlice = createSlice({
 });
 
 export const selectAllPreviews = (state) => state.articlePreviews.articles;
+
+export const isLoading = (state) => state.articlePreviews.isLoading;
 
 export default articlePreviewsSlice.reducer;

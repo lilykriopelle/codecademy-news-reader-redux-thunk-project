@@ -30,7 +30,6 @@ export const commentsSlice = createSlice({
     createCommentIsPending: false,
     failedToCreateComment: false
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loadCommentsForArticleId.pending, (state) => {
@@ -43,12 +42,11 @@ export const commentsSlice = createSlice({
         const { articleId, comments } = action.payload;
         state.byArticleId[articleId] = comments;
       })
-      .addCase(loadCommentsForArticleId.rejected, (state, action) => {
+      .addCase(loadCommentsForArticleId.rejected, (state) => {
         state.isLoadingComments = false;
         state.failedToLoadComments = true;
-        state.comments = {};
       })
-      .addCase(postCommentForArticleId.pending, (state, action) => {
+      .addCase(postCommentForArticleId.pending, (state) => {
         state.createCommentIsPending = true;
         state.failedToCreateComment = false;
       })
@@ -58,7 +56,7 @@ export const commentsSlice = createSlice({
         const { articleId } = action.payload;
         state.byArticleId[articleId].push(action.payload);
       })
-      .addCase(postCommentForArticleId.rejected, (state, action) => {
+      .addCase(postCommentForArticleId.rejected, (state) => {
         state.createCommentIsPending = false;
         state.failedToCreateComment = true;
       })
@@ -66,5 +64,7 @@ export const commentsSlice = createSlice({
 });
 
 export const selectComments = (state) => state.comments.byArticleId;
+export const isLoadingComments = (state) => state.comments.isLoadingComments;
+export const createCommentIsPending = (state) => state.comments.createCommentIsPending;
 
 export default commentsSlice.reducer;
