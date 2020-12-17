@@ -1,6 +1,6 @@
-import { rest } from "msw";
-import articlesData from "./articles.json";
-import commentsData from "./comments.json";
+import { rest } from 'msw';
+import articlesData from './articles.json';
+import commentsData from './comments.json';
 
 const userComments = {}
 
@@ -13,16 +13,16 @@ function mockDelay(milliseconds) {
 }
 
 export const handlers = [
-  rest.get("/api/articles", (req, res, ctx) => {
+  rest.get('/api/articles', (req, res, ctx) => {
     mockDelay(500)
     return res(ctx.status(200), ctx.json(articlesData))
   }),
-  rest.get("/api/articles/:articleId", (req, res, ctx) => {
+  rest.get('/api/articles/:articleId', (req, res, ctx) => {
     mockDelay(500)
     const { articleId } = req.params
     return res(ctx.status(200), ctx.json(articlesData.find(article => article.id === parseInt(articleId))));
   }),
-  rest.get("/api/articles/:articleId/comments", (req, res, ctx) => {
+  rest.get('/api/articles/:articleId/comments', (req, res, ctx) => {
     mockDelay(500)
     const { articleId } = req.params
     const userCommentsForArticle = userComments[articleId] || []
@@ -31,7 +31,7 @@ export const handlers = [
       comments: commentsData.filter(comment => comment.articleId === parseInt(articleId)).concat(userCommentsForArticle)
     }));
   }),
-  rest.post("/api/articles/:articleId/comments", (req, res, ctx) => {
+  rest.post('/api/articles/:articleId/comments', (req, res, ctx) => {
     mockDelay(500)
     const { articleId } = req.params
     const commentResponse = {

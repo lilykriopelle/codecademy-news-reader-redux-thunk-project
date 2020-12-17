@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadCommentsForArticleId } from "../comments/commentsSlice";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadCommentsForArticleId, selectComments } from '../comments/commentsSlice';
+import { selectCurrentArticle } from '../currentArticle/currentArticleSlice';
 import CommentList from '../../components/CommentList'
 import CommentForm from '../../components/CommentForm'
 
 const Comments = () => {
   const dispatch = useDispatch();
-  const article = useSelector((state) => state.currentArticle.article);
-  const commentsByArticleId = useSelector((state) => state.comments.byArticleId[article.id]);
+  const article = useSelector(selectCurrentArticle);
+  const comments = useSelector(selectComments)
+  const commentsForArticleId = comments[article.id];
   const { isLoadingComments } = useSelector((state) => state.comments);
 
   useEffect(() => {
@@ -17,9 +19,9 @@ const Comments = () => {
   if (isLoadingComments) return <div>Loading Comments</div>;
 
   return (
-    <div className="comments-container">
+    <div className='comments-container'>
       <CommentForm articleId={article.id}/>
-      <CommentList comments={commentsByArticleId}/>
+      <CommentList comments={commentsForArticleId}/>
     </div>
   );
 };

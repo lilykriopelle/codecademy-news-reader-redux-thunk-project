@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadCommentsForArticleId } from "../comments/commentsSlice";
-import FullArticle from "../../components/FullArticle"
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadCommentsForArticleId } from '../comments/commentsSlice';
+import FullArticle from '../../components/FullArticle'
 
 const CurrentArticle = () => {
   const dispatch = useDispatch();
@@ -17,14 +17,14 @@ const CurrentArticle = () => {
   }
   else if (!article.id) {
     return (
-      <div className="current-article-container">
+      <div className='current-article-container'>
         <h1>No article selected.</h1>
       </div>
     );
   }
 
   return (
-    <div className="current-article-container">
+    <div className='current-article-container'>
       <FullArticle article={article} />
     </div>
   );

@@ -1,16 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const loadAllPreviews = createAsyncThunk(
-  "articlePreviews/loadAllPreviews",
+  'articlePreviews/loadAllPreviews',
   async () => {
-    const data = await fetch("api/articles");
+    const data = await fetch('api/articles');
     const json = await data.json();
     return json;
   }
 );
 
 export const articlePreviewsSlice = createSlice({
-  name: "articlePreviews",
+  name: 'articlePreviews',
   initialState: {
     articles: [],
     isLoadingArticlePreviews: false,

@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const loadCurrentArticle = createAsyncThunk(
-  "currentArticle/loadCurrentArticle",
+  'currentArticle/loadCurrentArticle',
   async (articleId) => {
     const data = await fetch(`api/articles/${articleId}`);
     const json = await data.json();
@@ -10,7 +10,7 @@ export const loadCurrentArticle = createAsyncThunk(
 );
 
 export const currentArticleSlice = createSlice({
-  name: "currentArticle",
+  name: 'currentArticle',
   initialState: {
     article: {},
     isLoadingCurrentArticle: false,
@@ -35,5 +35,7 @@ export const currentArticleSlice = createSlice({
       })
   },
 });
+
+export const selectCurrentArticle = (state) => state.currentArticle.article;
 
 export default currentArticleSlice.reducer;

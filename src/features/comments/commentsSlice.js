@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const loadCommentsForArticleId = createAsyncThunk(
-  "comments/loadCommentsForArticleId",
+  'comments/loadCommentsForArticleId',
   async (articleId) => {
     const data = await fetch(`api/articles/${articleId}/comments`);
     const json = await data.json();
@@ -10,7 +10,7 @@ export const loadCommentsForArticleId = createAsyncThunk(
 );
 
 export const postCommentForArticleId = createAsyncThunk(
-  "comments/postCommentForArticleId",
+  'comments/postCommentForArticleId',
   async ({articleId, comment}) => {
     const data = await fetch(`api/articles/${articleId}/comments`, {
       method: 'POST',
@@ -22,7 +22,7 @@ export const postCommentForArticleId = createAsyncThunk(
 );
 
 export const commentsSlice = createSlice({
-  name: "comments",
+  name: 'comments',
   initialState: {
     byArticleId: {},
     isLoadingComments: false,
@@ -64,5 +64,7 @@ export const commentsSlice = createSlice({
       })
   },
 });
+
+export const selectComments = (state) => state.comments.byArticleId;
 
 export default commentsSlice.reducer;
