@@ -1,55 +1,66 @@
-[{
-	"id": 1,
-	"title": "A News Article About World News",
-	"preview": "The preview of the article about world news",
-	"fullText": "This is the full body of the article about world news."
-},
-{
-	"id": 2,
-	"title": "A News Article About USA News",
-	"preview": "The preview of the article about USA news",
-	"fullText": "This is the full body of the article about USA news, "
-},
-{
-	"id": 3,
-	"title": "A News Article About Sports",
-	"preview": "The preview of the article about sports",
-	"fullText": "This is the full body of the article about sports, "
-},
-{
-	"id": 4,
-	"title": "A News Article About Arts & Culture",
-	"preview": "The preview of the article about arts and culture",
-	"fullText": "This is the full body of the article about arts and culture, "
-},
-{
-	"id": 5,
-	"title": "A News Article Fashion",
-	"preview": "The preview of the article about fashion",
-	"fullText": "This is the full body of the article about fashion, "
-},
-{
-	"id": 6,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-},
-{
-	"id": 7,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-},
-{
-	"id": 8,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-},
-{
-	"id": 9,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-},
-{
-	"id": 10,
-	"title": "Title",
-	"preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-}]
+[
+  {
+    "id": 1,
+    "title": "A News Article About World News",
+    "preview": "The preview of the article about world news Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "fullText": "This is the full body of the article about world news.",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 2,
+    "title": "A News Article About USA News",
+    "preview": "The preview of the article about USA news Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "fullText": "This is the full body of the article about USA news, ",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 3,
+    "title": "A News Article About Sports",
+    "preview": "The preview of the article about sports",
+    "fullText": "This is the full body of the article about sports, ",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 4,
+    "title": "A News Article About Arts & Culture",
+    "preview": "The preview of the article about arts and culture",
+    "fullText": "This is the full body of the article about arts and culture, ",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 5,
+    "title": "A News Article Fashion",
+    "preview": "The preview of the article about fashion",
+    "fullText": "This is the full body of the article about fashion, ",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 6,
+    "title": "Title",
+    "preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 7,
+    "title": "Title",
+    "preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 8,
+    "title": "Title",
+    "preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 9,
+    "title": "Title",
+    "preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "image": "https://loremflickr.com/215/157"
+  },
+  {
+    "id": 10,
+    "title": "Title",
+    "preview": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+  }
+]
