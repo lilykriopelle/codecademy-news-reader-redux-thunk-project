@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCommentsForArticleId } from '../comments/commentsSlice';
 import { selectCurrentArticle, isLoadingCurrentArticle } from '../currentArticle/currentArticleSlice';
 import FullArticle from '../../components/FullArticle'
 
@@ -10,7 +9,7 @@ const CurrentArticle = () => {
   const currentArticleIsLoading = useSelector(isLoadingCurrentArticle);
 
   useEffect(() => {
-      if (article) dispatch(loadCommentsForArticleId(article.id));
+    // TO DO – dispatch asynchronous action to fetch current article data here
   }, [dispatch, article]);
 
   if (currentArticleIsLoading) {
