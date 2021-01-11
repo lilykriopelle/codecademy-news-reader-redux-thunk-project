@@ -14,6 +14,7 @@ const Comments = () => {
   return (
     <div className='comments-container'>
       <CommentForm articleId={article.id}/>
+      <CommentList comments={[]} />
     </div>
   );
 };
