@@ -5,9 +5,6 @@ export default function CommentList({ comments }) {
   if (comments) {
     return (
       <ul className='comments-list'>
-        {comments.map((comment) => (
-          <Comment comment={comment} />
-        ))}
       </ul>
     );
   }
