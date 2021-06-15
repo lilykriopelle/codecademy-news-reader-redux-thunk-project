@@ -55,7 +55,7 @@ export const handlers = [
     mockDelay(500);
     const { articleId } = req.params;
     const commentResponse = {
-      id: commentsData.length,
+      id: (userComments[articleId] || []).length,
       articleId: parseInt(articleId),
       text: JSON.parse(req.body).comment,
     };
@@ -68,4 +68,20 @@ export const handlers = [
 
     return res(ctx.status(200), ctx.json(commentResponse));
   }),
+  rest.delete(
+    "/api/articles/:articleId/comments/:commentId",
+    (req, res, ctx) => {
+      mockDelay(500);
+      const { articleId, commentId } = req.params;
+
+      if (!userComments[articleId]) {
+        return res(ctx.status(400, `${articleId} does not exist.`));
+      }
+      const newComments = userComments[articleId].filter(
+        (userComment) => userComment.id !== parseInt(commentId, 10)
+      );
+      console.log("handler", userComments, newComments);
+      return res(ctx.status(200), ctx.json(newComments));
+    }
+  ),
 ];

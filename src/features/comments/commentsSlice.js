@@ -21,6 +21,21 @@ export const postCommentForArticleId = createAsyncThunk(
   }
 );
 
+export const deleteCommentForArticleId = createAsyncThunk(
+  "comments/deleteCommentForArticleId",
+  async ({ articleId, commentId }) => {
+    const data = await fetch(
+      `api/articles/${articleId}/comments/${commentId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const json = await data.json();
+    
+    return json;
+  }
+);
+
 export const commentsSlice = createSlice({
   name: 'comments',
   initialState: {
@@ -60,6 +75,19 @@ export const commentsSlice = createSlice({
         state.createCommentIsPending = false;
         state.failedToCreateComment = true;
       })
+      .addCase(deleteCommentForArticleId.pending, (state) => {
+        console.log("loading");
+        state.isLoadingComments = true;
+      })
+      .addCase(deleteCommentForArticleId.fulfilled, (state, action) => {
+        state.isLoadingComments = false;
+        console.log("fufilled", action);
+        state.byArticleId[action.meta.arg.articleId] = action.payload;
+      })
+      .addCase(deleteCommentForArticleId.rejected, (state) => {
+        state.isLoadingComments = false;
+        state.failedToLoadComments = true;
+      });
   },
 });
 

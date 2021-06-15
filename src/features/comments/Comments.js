@@ -24,9 +24,9 @@ const Comments = () => {
   if (!article) return null;
 
   return (
-    <div className='comments-container'>
-      <h3 className='comments-title'>Comments</h3>
-      <CommentList comments={commentsForArticleId} />
+    <div className="comments-container">
+      <h3 className="comments-title">Comments</h3>
+      <CommentList comments={commentsForArticleId} articleId={article.id} />
       <CommentForm articleId={article.id} />
     </div>
   );

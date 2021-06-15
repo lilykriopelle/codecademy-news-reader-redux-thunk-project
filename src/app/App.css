@@ -149,6 +149,9 @@ main {
   letter-spacing: normal;
   color: #141c3a;
   overflow-wrap: anywhere;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .comment-container:not(:last-of-type) {
@@ -189,6 +192,21 @@ main {
   letter-spacing: normal;
   color: #ffffff;
   margin-left: auto;
+  cursor: pointer;
+}
+
+.button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: solid 1px #141c3a;
+  background-color: #141c3a;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
   cursor: pointer;
 }
 
