@@ -1,8 +1,17 @@
-import { rest } from 'msw';
-import articlesData from './articles.json';
-import commentsData from './comments.json';
+import articlesData from "./articles.json";
+import commentsData from "./comments.json";
 
+const articles = articlesData;
+const comments = commentsData;
 const userComments = {};
+
+function uuidv4() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
 
 function mockDelay(milliseconds) {
   const date = Date.now();
@@ -12,76 +21,43 @@ function mockDelay(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
-export const handlers = [
-  rest.get('/api/articles', (req, res, ctx) => {
-    mockDelay(500);
-    return res(
-      ctx.status(200),
-      ctx.json(
-        articlesData.map((article) => ({
-          id: article.id,
-          title: article.title,
-          preview: article.preview,
-          image: article.image,
-        }))
-      )
-    );
-  }),
-  rest.get('/api/articles/:articleId', (req, res, ctx) => {
-    mockDelay(500);
-    const { articleId } = req.params;
-    return res(
-      ctx.status(200),
-      ctx.json(
-        articlesData.find((article) => article.id === parseInt(articleId))
-      )
-    );
-  }),
-  rest.get('/api/articles/:articleId/comments', (req, res, ctx) => {
-    mockDelay(500);
-    const { articleId } = req.params;
-    const userCommentsForArticle = userComments[articleId] || [];
-    return res(
-      ctx.status(200),
-      ctx.json({
-        articleId: parseInt(articleId),
-        comments: commentsData
-          .filter((comment) => comment.articleId === parseInt(articleId))
-          .concat(userCommentsForArticle),
-      })
-    );
-  }),
-  rest.post('/api/articles/:articleId/comments', (req, res, ctx) => {
-    mockDelay(500);
-    const { articleId } = req.params;
-    const commentResponse = {
-      id: (userComments[articleId] || []).length,
-      articleId: parseInt(articleId),
-      text: JSON.parse(req.body).comment,
-    };
+export const getArticles = () =>
+  articles.map(({ fullText, ...rest }) => ({ ...rest }));
 
-    if (userComments[articleId]) {
-      userComments[articleId].push(commentResponse);
-    } else {
-      userComments[articleId] = [commentResponse];
-    }
+export const getArticle = (articleToGetId) =>
+  articles.find(({ id }) => id === articleToGetId);
 
-    return res(ctx.status(200), ctx.json(commentResponse));
-  }),
-  rest.delete(
-    "/api/articles/:articleId/comments/:commentId",
-    (req, res, ctx) => {
-      mockDelay(500);
-      const { articleId, commentId } = req.params;
+export const getArticleComments = (articleId) => {
+  const commentsForArticle = userComments[articleId] || [];
 
-      if (!userComments[articleId]) {
-        return res(ctx.status(400, `${articleId} does not exist.`));
-      }
-      const newComments = userComments[articleId].filter(
-        (userComment) => userComment.id !== parseInt(commentId, 10)
-      );
-      console.log("handler", userComments, newComments);
-      return res(ctx.status(200), ctx.json(newComments));
-    }
-  ),
-];
+  return {
+    articleId: articleId,
+    comments: commentsData
+      .filter((comment) => comment.articleId === articleId)
+      .concat(commentsForArticle),
+  };
+};
+
+export const postCommentForArticle = (articleId, comment) => {
+  const commentResponse = {
+    id: uuidv4(),
+    articleId: articleId,
+    text: comment,
+  };
+
+  if (userComments[articleId]) {
+    userComments[articleId].push(commentResponse);
+  } else {
+    userComments[articleId] = [commentResponse];
+  }
+
+  return commentResponse;
+};
+
+export const deleteCommentForArticle = (articleId, commentId) => {
+  const newComments = userComments[articleId].filter(
+    (userComment) => userComment.id !== commentId
+  );
+  userComments[articleId] = [...newComments];
+  return newComments;
+};

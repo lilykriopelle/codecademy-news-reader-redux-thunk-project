@@ -1,39 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  deleteCommentForArticle,
+  getArticleComments,
+  postCommentForArticle,
+} from "../../mocks/handlers";
 
 export const loadCommentsForArticleId = createAsyncThunk(
-  'comments/loadCommentsForArticleId',
-  async (articleId) => {
-    const data = await fetch(`api/articles/${articleId}/comments`);
-    const json = await data.json();
-    return json;
-  }
+  "comments/loadCommentsForArticleId",
+  async (articleId) => getArticleComments(articleId)
 );
 
 export const postCommentForArticleId = createAsyncThunk(
-  'comments/postCommentForArticleId',
-  async ({articleId, comment}) => {
-    const data = await fetch(`api/articles/${articleId}/comments`, {
-      method: 'POST',
-      body: JSON.stringify({ comment: comment})
-    });
-    const json = await data.json();
-    return json;
-  }
+  "comments/postCommentForArticleId",
+  async ({ articleId, comment }) => postCommentForArticle(articleId, comment)
 );
 
 export const deleteCommentForArticleId = createAsyncThunk(
   "comments/deleteCommentForArticleId",
-  async ({ articleId, commentId }) => {
-    const data = await fetch(
-      `api/articles/${articleId}/comments/${commentId}`,
-      {
-        method: "DELETE",
-      }
-    );
-    const json = await data.json();
-    
-    return json;
-  }
+  async ({ articleId, commentId }) =>
+    deleteCommentForArticle(articleId, commentId)
 );
 
 export const commentsSlice = createSlice({
