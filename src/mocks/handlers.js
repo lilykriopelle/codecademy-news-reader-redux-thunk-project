@@ -2,7 +2,6 @@ import articlesData from "./articles.json";
 import commentsData from "./comments.json";
 
 const articles = articlesData;
-const comments = commentsData;
 const userComments = {};
 
 function uuidv4() {
@@ -13,51 +12,53 @@ function uuidv4() {
   });
 }
 
-function mockDelay(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
 export const getArticles = () =>
-  articles.map(({ fullText, ...rest }) => ({ ...rest }));
+  new Promise((resolve) => {
+    resolve(articles.map(({ fullText, ...rest }) => ({ ...rest })));
+  });
 
 export const getArticle = (articleToGetId) =>
-  articles.find(({ id }) => id === articleToGetId);
+  new Promise((resolve) => {
+    resolve(articles.find(({ id }) => id === articleToGetId));
+  });
 
 export const getArticleComments = (articleId) => {
-  const commentsForArticle = userComments[articleId] || [];
-
-  return {
-    articleId: articleId,
-    comments: commentsData
-      .filter((comment) => comment.articleId === articleId)
-      .concat(commentsForArticle),
-  };
+  return new Promise((resolve) => {
+    const commentsForArticle = userComments[articleId] || [];
+    resolve({
+      articleId: articleId,
+      comments: commentsData
+        .filter((comment) => comment.articleId === articleId)
+        .concat(commentsForArticle),
+    });
+  });
 };
 
 export const postCommentForArticle = (articleId, comment) => {
-  const commentResponse = {
-    id: uuidv4(),
-    articleId: articleId,
-    text: comment,
-  };
+  return new Promise((resolve) => {
+    const commentResponse = {
+      id: uuidv4(),
+      articleId: articleId,
+      text: comment,
+    };
 
-  if (userComments[articleId]) {
-    userComments[articleId].push(commentResponse);
-  } else {
-    userComments[articleId] = [commentResponse];
-  }
+    if (userComments[articleId]) {
+      userComments[articleId].push(commentResponse);
+    } else {
+      userComments[articleId] = [commentResponse];
+    }
 
-  return commentResponse;
+    resolve(commentResponse);
+  });
 };
 
 export const deleteCommentForArticle = (articleId, commentId) => {
-  const newComments = userComments[articleId].filter(
-    (userComment) => userComment.id !== commentId
-  );
-  userComments[articleId] = [...newComments];
-  return newComments;
+  return new Promise((resolve) => {
+    const newComments = userComments[articleId].filter(
+      (userComment) => userComment.id !== commentId
+    );
+    userComments[articleId] = [...newComments];
+
+    resolve(newComments);
+  });
 };

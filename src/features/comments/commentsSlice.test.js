@@ -1,10 +1,8 @@
-import reducer, {
-  loadCommentsForArticleId,
-  postCommentForArticleId,
-} from "./commentsSlice";
+import reducer, { loadCommentsForArticleId } from "./commentsSlice";
 import commentsData from "../../mocks/comments.json";
+import { getArticleComments } from "../../mocks/handlers";
 
-beforeAll(() => jest.spyOn(window, "fetch"));
+jest.mock("../../mocks/handlers");
 
 describe("commentsSlice", () => {
   const initialState = {
@@ -16,13 +14,11 @@ describe("commentsSlice", () => {
   };
 
   it("should load comments", async () => {
-    window.fetch.mockResolvedValueOnce({
-      json: async () => ({
-        articleId: commentsData[1].articleId,
-        comments: commentsData.filter(
-          (comment) => comment.articleId === commentsData[1].articleId
-        ),
-      }),
+    getArticleComments.mockResolvedValue({
+      articleId: commentsData[1].articleId,
+      comments: commentsData.filter(
+        (comment) => comment.articleId === commentsData[1].articleId
+      ),
     });
 
     const actionCreator = loadCommentsForArticleId();
@@ -43,7 +39,7 @@ describe("commentsSlice", () => {
   });
 
   it("should handle an API error", async () => {
-    window.fetch.mockRejectedValueOnce({});
+    getArticleComments.mockRejectedValueOnce({});
 
     const actionCreator = loadCommentsForArticleId();
     const action = await actionCreator(jest.fn(), initialState);

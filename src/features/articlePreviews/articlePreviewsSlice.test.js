@@ -1,7 +1,8 @@
 import reducer, { loadAllPreviews } from "./articlePreviewsSlice";
 import articlesData from "../../mocks/articles.json";
+import { getArticles } from "../../mocks/handlers";
 
-beforeAll(() => jest.spyOn(window, "fetch"));
+jest.mock("../../mocks/handlers");
 
 describe("articlePreviews", () => {
   const initialState = {
@@ -11,9 +12,7 @@ describe("articlePreviews", () => {
   };
 
   it("should load articles", async () => {
-    window.fetch.mockResolvedValueOnce({
-      json: async () => articlesData,
-    });
+    getArticles.mockResolvedValueOnce(articlesData);
 
     const actionCreator = loadAllPreviews();
     const action = await actionCreator(jest.fn(), initialState);
@@ -27,7 +26,7 @@ describe("articlePreviews", () => {
   });
 
   it("should handle an API error", async () => {
-    window.fetch.mockRejectedValueOnce({});
+    getArticles.mockRejectedValueOnce();
 
     const actionCreator = loadAllPreviews();
     const action = await actionCreator(jest.fn(), initialState);
