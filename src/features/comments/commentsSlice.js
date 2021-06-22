@@ -1,24 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  deleteCommentForArticle,
+  getArticleComments,
+  postCommentForArticle,
+} from "../../mocks/handlers";
 
 export const loadCommentsForArticleId = createAsyncThunk(
-  'comments/loadCommentsForArticleId',
-  async (articleId) => {
-    const data = await fetch(`api/articles/${articleId}/comments`);
-    const json = await data.json();
-    return json;
-  }
+  "comments/loadCommentsForArticleId",
+  async (articleId) => getArticleComments(articleId)
 );
 
 export const postCommentForArticleId = createAsyncThunk(
-  'comments/postCommentForArticleId',
-  async ({articleId, comment}) => {
-    const data = await fetch(`api/articles/${articleId}/comments`, {
-      method: 'POST',
-      body: JSON.stringify({ comment: comment})
-    });
-    const json = await data.json();
-    return json;
-  }
+  "comments/postCommentForArticleId",
+  async ({ articleId, comment }) => postCommentForArticle(articleId, comment)
+);
+
+export const deleteCommentForArticleId = createAsyncThunk(
+  "comments/deleteCommentForArticleId",
+  async ({ articleId, commentId }) =>
+    deleteCommentForArticle(articleId, commentId)
 );
 
 export const commentsSlice = createSlice({
@@ -60,6 +60,19 @@ export const commentsSlice = createSlice({
         state.createCommentIsPending = false;
         state.failedToCreateComment = true;
       })
+      .addCase(deleteCommentForArticleId.pending, (state) => {
+        console.log("loading");
+        state.isLoadingComments = true;
+      })
+      .addCase(deleteCommentForArticleId.fulfilled, (state, action) => {
+        state.isLoadingComments = false;
+        console.log("fufilled", action);
+        state.byArticleId[action.meta.arg.articleId] = action.payload;
+      })
+      .addCase(deleteCommentForArticleId.rejected, (state) => {
+        state.isLoadingComments = false;
+        state.failedToLoadComments = true;
+      });
   },
 });
 

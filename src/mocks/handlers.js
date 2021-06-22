@@ -1,63 +1,45 @@
-import { rest } from 'msw';
-import articlesData from './articles.json';
-import commentsData from './comments.json';
+import articlesData from "./articles.json";
+import commentsData from "./comments.json";
 
+const articles = articlesData;
 const userComments = {};
 
-function mockDelay(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
+function uuidv4() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
 }
 
-export const handlers = [
-  rest.get('/api/articles', (req, res, ctx) => {
-    mockDelay(500);
-    return res(
-      ctx.status(200),
-      ctx.json(
-        articlesData.map((article) => ({
-          id: article.id,
-          title: article.title,
-          preview: article.preview,
-          image: article.image,
-        }))
-      )
-    );
-  }),
-  rest.get('/api/articles/:articleId', (req, res, ctx) => {
-    mockDelay(500);
-    const { articleId } = req.params;
-    return res(
-      ctx.status(200),
-      ctx.json(
-        articlesData.find((article) => article.id === parseInt(articleId))
-      )
-    );
-  }),
-  rest.get('/api/articles/:articleId/comments', (req, res, ctx) => {
-    mockDelay(500);
-    const { articleId } = req.params;
-    const userCommentsForArticle = userComments[articleId] || [];
-    return res(
-      ctx.status(200),
-      ctx.json({
-        articleId: parseInt(articleId),
-        comments: commentsData
-          .filter((comment) => comment.articleId === parseInt(articleId))
-          .concat(userCommentsForArticle),
-      })
-    );
-  }),
-  rest.post('/api/articles/:articleId/comments', (req, res, ctx) => {
-    mockDelay(500);
-    const { articleId } = req.params;
+export const getArticles = () =>
+  new Promise((resolve) => {
+    resolve(articles.map(({ fullText, ...rest }) => ({ ...rest })));
+  });
+
+export const getArticle = (articleToGetId) =>
+  new Promise((resolve) => {
+    resolve(articles.find(({ id }) => id === articleToGetId));
+  });
+
+export const getArticleComments = (articleId) => {
+  return new Promise((resolve) => {
+    const commentsForArticle = userComments[articleId] || [];
+    resolve({
+      articleId: articleId,
+      comments: commentsData
+        .filter((comment) => comment.articleId === articleId)
+        .concat(commentsForArticle),
+    });
+  });
+};
+
+export const postCommentForArticle = (articleId, comment) => {
+  return new Promise((resolve) => {
     const commentResponse = {
-      id: commentsData.length,
-      articleId: parseInt(articleId),
-      text: JSON.parse(req.body).comment,
+      id: uuidv4(),
+      articleId: articleId,
+      text: comment,
     };
 
     if (userComments[articleId]) {
@@ -66,6 +48,17 @@ export const handlers = [
       userComments[articleId] = [commentResponse];
     }
 
-    return res(ctx.status(200), ctx.json(commentResponse));
-  }),
-];
+    resolve(commentResponse);
+  });
+};
+
+export const deleteCommentForArticle = (articleId, commentId) => {
+  return new Promise((resolve) => {
+    const newComments = userComments[articleId].filter(
+      (userComment) => userComment.id !== commentId
+    );
+    userComments[articleId] = [...newComments];
+
+    resolve(newComments);
+  });
+};
